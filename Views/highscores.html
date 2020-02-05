@@ -16,18 +16,27 @@
     <hr>
 
     <ol>
-        <li>Item</li>
-        <li>Item</li>
-        <li>Item</li>
-        <li>Item</li>
-        <li>Item</li>
-        <li>Item</li>
-        <li>Item</li>
-        <li>Item</li>
-        <li>Item</li>
-        <li>Item</li>
-        <li>Item</li>
+        <script>
+            fetch('/getscores').then(function(scores){
+                scores.json().then(function(thescores){
+                    console.log(thescores);
+                    for (let score of thescores.scores){
+                        console.log(score);
+                        var scorename = document.createElement('li');
+    
+                        scorename.innerText = score.name + " : " + score.score;
+        
+                       
+                        document.body.appendChild(scorename);
+
+                        
+                    }
+                });
+            });
+        </script>
+
     </ol>
+
     
 </body>
 </html>
